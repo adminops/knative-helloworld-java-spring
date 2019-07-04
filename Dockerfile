@@ -1,6 +1,6 @@
 # Use the official maven/Java 8 image to create a build artifact.
 # https://hub.docker.com/_/maven
-FROM layershop.dangdang.com/cnlab/maven:3.6.1-jdk-8-alpine as builder
+FROM layershop.dangdang.com/cnlab/maven:3.6.1-jdk-8-alpine-private as builder
 
 # Copy local code to the container image.
 WORKDIR /app
