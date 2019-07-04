@@ -14,10 +14,10 @@ RUN mvn package -DskipTests
 # It's important to use OpenJDK 8u191 or above that has container support enabled.
 # https://hub.docker.com/r/adoptopenjdk/openjdk8
 # https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
-FROM layershop.dangdang.com/cnlab/adoptopenjdk/openjdk8:jdk8u202-b08-alpine-slim
+FROM layershop.dangdang.com/cnlab/openjdk:8u212-jdk-alpine
 
 # Copy the jar to the production image from the builder stage.
 COPY --from=builder /app/target/helloworld-*.jar /helloworld.jar
 
 # Run the web service on container startup.
-CMD ["java","-Djava.security.egd=file:/dev/./urandom","-Dserver.port=${PORT}","-jar","/helloworld.jar"]
+CMD ["java","-Djava.security.egd=file:/dev/./urandom","-Dserver.port=8080","-jar","/helloworld.jar"]
